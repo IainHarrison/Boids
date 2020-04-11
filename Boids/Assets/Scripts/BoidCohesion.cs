@@ -9,6 +9,7 @@ using UnityEngine;
 public class BoidCohesion : MonoBehaviour
 {
     private Boid boid;
+    public List<GameObject> boids = new List<GameObject>();
 
     public float radius;
 
@@ -21,10 +22,10 @@ public class BoidCohesion : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        var boids = FindObjectsOfType<Boid>(); //fix this in the future
+        //var boids = FindObjectsOfType<Boid>(); //fix this in the future
         var avarage = Vector3.zero;
         var found = 0;
-
+        
         foreach(var _boid in boids.Where(b => b != boid)) //not this boid
         {
             var difrence = _boid.transform.position - this.transform.position; //difrence in space of the 2 boids
@@ -39,5 +40,6 @@ public class BoidCohesion : MonoBehaviour
             avarage = avarage / found;
             boid.velocity += Vector3.Lerp(Vector3.zero, avarage, avarage.magnitude / radius); //lerp towards the avarage of the boid cluster
         }
+     
     }
 }

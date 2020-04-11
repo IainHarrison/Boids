@@ -8,6 +8,7 @@ using System.Linq;
 public class BoidAlignment : MonoBehaviour
 {
     private Boid boid;
+    public List<GameObject> boids = new List<GameObject>();
 
     public float radius;
 
@@ -20,7 +21,7 @@ public class BoidAlignment : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        var boids = FindObjectsOfType<Boid>(); //fix this in the future
+        //var boids = FindObjectsOfType<Boid>(); //fix this in the future
         var avarage = Vector3.zero;
         var found = 0;
 

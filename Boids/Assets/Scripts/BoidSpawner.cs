@@ -17,7 +17,22 @@ public class BoidSpawner : MonoBehaviour
         {
             var _boid = Instantiate(BoidPrefab, this.transform.position + Random.insideUnitSphere * SpawnRadius, Random.rotation);
             _boid.GetComponent<PlayZone>().BoidSpawner = this.gameObject;
+            _boid.transform.parent = this.gameObject.transform;
         }
+
+        List<GameObject> _boids = new List<GameObject>();
+        foreach (Transform _child in this.transform)
+        {
+            _boids.Add(_child.gameObject);
+        }
+
+        foreach (Transform child in this.transform)
+        {
+            child.gameObject.GetComponent<BoidAlignment>().boids = _boids;
+            child.gameObject.GetComponent<BoidCohesion>().boids = _boids;
+            child.gameObject.GetComponent<BoidSeparation>().boids = _boids;
+        }
+  
     }
 
     // Update is called once per frame
