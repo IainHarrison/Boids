@@ -27,7 +27,7 @@ public class BoidAlignment : MonoBehaviour
         foreach (var _boid in Boids.Where(b => b != boid)) //not this boid
         {
             var difrence = _boid.transform.position - this.transform.position; //difrence in space of the 2 boids
-            if (difrence.magnitude < radius) //if in range
+            if (difrence.magnitude < Radius) //if in range
             {
                 avarage += boid.velocity; 
                 found++; //we found one in range
