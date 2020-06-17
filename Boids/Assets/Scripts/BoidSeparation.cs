@@ -7,13 +7,13 @@ using System.Linq;
 
 public class BoidSeparation : MonoBehaviour
 {
-    public List<GameObject> boids = new List<GameObject>();
+    public List<GameObject> Boids = new List<GameObject>();
 
     private Boid boid;
 
-    public float radius;
+    public float Radius;
 
-    public float repolsion;
+    public float Repolsion;
 
     // Start is called before the first frame update
     void Start()
@@ -24,14 +24,13 @@ public class BoidSeparation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //var boids = FindObjectsOfType<Boid>(); //fix this in the future
         var avarage = Vector3.zero;
         var found = 0;
 
-        foreach (var _boid in boids.Where(b => b != boid)) //not this boid
+        foreach (var _boid in Boids.Where(b => b != boid)) //not this boid
         {
             var difrence = _boid.transform.position - this.transform.position; //difrence in space of the 2 boids
-            if (difrence.magnitude < radius) //if to close 
+            if (difrence.magnitude < Radius) //if to close 
             {
                 avarage += difrence; //direction towards
                 found++; //we found one that is to close
@@ -40,7 +39,7 @@ public class BoidSeparation : MonoBehaviour
         if (found > 0)
         {
             avarage = avarage / found;
-            boid.velocity -= Vector3.Lerp(Vector3.zero, avarage, avarage.magnitude / radius) * repolsion; //lerp away from the avarage of the boid cluster
+            boid.velocity -= Vector3.Lerp(Vector3.zero, avarage, avarage.magnitude / Radius) * Repolsion; //lerp away from the avarage of the boid cluster
         }
     }
 }
