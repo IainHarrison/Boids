@@ -28,9 +28,9 @@ public class BoidSpawner : MonoBehaviour
 
         foreach (Transform child in this.transform)
         {
-            child.gameObject.GetComponent<BoidAlignment>().boids = _boids;
-            child.gameObject.GetComponent<BoidCohesion>().boids = _boids;
-            child.gameObject.GetComponent<BoidSeparation>().boids = _boids;
+            child.gameObject.GetComponent<BoidAlignment>().Boids = _boids;
+            child.gameObject.GetComponent<BoidCohesion>().Boids = _boids;
+            child.gameObject.GetComponent<BoidSeparation>().Boids = _boids;
         }
   
     }
