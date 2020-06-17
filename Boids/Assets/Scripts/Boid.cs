@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Boid : MonoBehaviour
 {
-    public Vector3 velocity;
-    public float maxVelocity;
+    public Vector3 Velocity;
+    public float MaxVelocity;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,9 +16,7 @@ public class Boid : MonoBehaviour
     void Update()
     {
         if ( velocity.magnitude > maxVelocity)
-        {
             velocity = velocity.normalized * maxVelocity;
-        }
 
         this.transform.position += velocity * Time.deltaTime; //move 
         this.transform.rotation = Quaternion.LookRotation(velocity); //look in direction of movment
